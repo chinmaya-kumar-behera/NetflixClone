@@ -1,11 +1,187 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    home page
-</body>
+    <link rel="stylesheet" href="{% static "css/index.css" %}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .movie-container {
+        position: relative;
+      }
+
+      .movie-container .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .movie-container .scroll-btn-left {
+        left: -40px;
+      }
+
+      .movie-container .scroll-btn-right {
+        right: -40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="p-10">
+      <section class="space-y-5">
+        <h1 class="text-6xl font-bold">Only on Netflix</h1>
+        <p class="text-lg">
+          Netflix is the home of amazing original programming that you can’t
+          find anywhere else.<br />
+          Movies, TV shows, specials and more, all tailored specifically to you.
+        </p>
+      </section>
+
+      <section class="mb-8 mt-20">
+        <h2 class="text-2xl font-semibold mb-4">Trending Movies</h2>
+        <div class="movie-container">
+          <div class="scroll-btn scroll-btn-left">&lt;</div>
+          <div class="flex gap-3 overflow-x-scroll no-scrollbar">
+            {% for movie in trending_movies %}
+            <div class="max-w-60">
+              <div class="min-w-60">
+                <img
+                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                  alt="{{ movie.title }}"
+                  class="object-cover w-full h-full rounded-lg"
+                />
+              </div>
+              <p
+                class="mt-2 text-center truncate cursor-pointer"
+                title="{{ movie.title }}"
+              >
+                {{ movie.title }}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="scroll-btn scroll-btn-right">&gt;</div>
+        </div>
+      </section>
+
+      <section class="mb-8 mt-20">
+        <h2 class="text-2xl font-semibold mb-4">Popular Movies</h2>
+        <div class="movie-container">
+          <div class="scroll-btn scroll-btn-left">&lt;</div>
+          <div class="flex gap-3 overflow-x-scroll no-scrollbar">
+            {% for movie in popular_movies %}
+            <div class="max-w-60">
+              <div class="min-w-60">
+                <img
+                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                  alt="{{ movie.title }}"
+                  class="object-cover w-full h-full rounded-lg"
+                />
+              </div>
+              <p
+                class="mt-2 text-center truncate cursor-pointer"
+                title="{{ movie.title }}"
+              >
+                {{ movie.title }}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="scroll-btn scroll-btn-right">&gt;</div>
+        </div>
+      </section>
+
+      <section class="mb-8 mt-20">
+        <h2 class="text-2xl font-semibold mb-4">Trending Movies</h2>
+        <div class="movie-container">
+          <div class="scroll-btn scroll-btn-left">&lt;</div>
+          <div class="flex gap-3 overflow-x-scroll no-scrollbar">
+            {% for movie in trending_movies %}
+            <div class="max-w-60">
+              <div class="min-w-60">
+                <img
+                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                  alt="{{ movie.title }}"
+                  class="object-cover w-full h-full rounded-lg"
+                />
+              </div>
+              <p
+                class="mt-2 text-center truncate cursor-pointer"
+                title="{{ movie.title }}"
+              >
+                {{ movie.title }}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="scroll-btn scroll-btn-right">&gt;</div>
+        </div>
+      </section>
+
+      <section class="mb-8 mt-20">
+        <h2 class="text-2xl font-semibold mb-4">Upcomming Movies</h2>
+        <div class="movie-container">
+          <div class="scroll-btn scroll-btn-left">&lt;</div>
+          <div class="flex gap-3 overflow-x-scroll no-scrollbar">
+            {% for movie in upcoming_movies %}
+            <div class="max-w-60">
+              <div class="min-w-60">
+                <img
+                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                  alt="{{ movie.title }}"
+                  class="object-cover w-full h-full rounded-lg"
+                />
+              </div>
+              <p
+                class="mt-2 text-center truncate cursor-pointer"
+                title="{{ movie.title }}"
+              >
+                {{ movie.title }}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="scroll-btn scroll-btn-right">&gt;</div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const containers = document.querySelectorAll(".movie-container");
+
+        containers.forEach((container) => {
+          const scrollLeftBtn = container.querySelector(".scroll-btn-left");
+          const scrollRightBtn = container.querySelector(".scroll-btn-right");
+          const movieList = container.querySelector(".flex");
+
+          scrollLeftBtn.addEventListener("click", function () {
+            movieList.scrollBy({
+              left: -200, // Adjust scroll distance as needed
+              behavior: "smooth",
+            });
+          });
+
+          scrollRightBtn.addEventListener("click", function () {
+            movieList.scrollBy({
+              left: 200, // Adjust scroll distance as needed
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
 </html>

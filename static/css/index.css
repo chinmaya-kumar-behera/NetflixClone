@@ -1,0 +1,23 @@
+body,html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #201c1c;
+    color: #f1fbff;
+    direction: ltr;
+    font-family: Netflix Sans, Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    font-size: 16px;
+}
+
+/* Custom styles for no scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+/* movies card */
+/* flex gap-3 overflow-x-scroll no-scrollbar */
