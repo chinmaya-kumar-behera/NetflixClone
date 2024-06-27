@@ -71,7 +71,7 @@
             </div>
             <div class="grid grid-cols-6 gap-4 items-center justify-center">
                 {% for recommendation in recommendations %}
-                <a href='{%  url "movie" movie.id %}'>
+                <a href='{%  url "movie" recommendation.id %}'>
                     <div class="max-w-full" title="{{ recommendation.title }}">
                         <img 
                             src="https://image.tmdb.org/t/p/w1280{{ recommendation.poster_path }}" 
