@@ -55,21 +55,23 @@
           <div class="scroll-btn scroll-btn-left">&lt;</div>
           <div class="flex gap-3 overflow-x-scroll no-scrollbar">
             {% for movie in trending_movies %}
-            <div class="max-w-60">
-              <div class="min-w-60">
+            <a href='{%  url "movie" movie.id %}'>
+              <div class="max-w-60">
+                <div class="min-w-60">
                 <img
                   src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
                   alt="{{ movie.title }}"
                   class="object-cover w-full h-full rounded-lg"
                 />
-              </div>
-              <p
-                class="mt-2 text-center truncate cursor-pointer"
-                title="{{ movie.title }}"
-              >
-                {{ movie.title }}
-              </p>
+                </div>
+                <p
+                  class="mt-2 text-center truncate cursor-pointer"
+                  title="{{ movie.title }}"
+                >
+                  {{ movie.title }}
+                </p>
             </div>
+            </a>
             {% endfor %}
           </div>
           <div class="scroll-btn scroll-btn-right">&gt;</div>
@@ -82,21 +84,23 @@
           <div class="scroll-btn scroll-btn-left">&lt;</div>
           <div class="flex gap-3 overflow-x-scroll no-scrollbar">
             {% for movie in popular_movies %}
-            <div class="max-w-60">
-              <div class="min-w-60">
-                <img
-                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
-                  alt="{{ movie.title }}"
-                  class="object-cover w-full h-full rounded-lg"
-                />
+            <a href='{%  url "movie" movie.id %}'>
+              <div class="max-w-60">
+                <div class="min-w-60">
+                  <img
+                    src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                    alt="{{ movie.title }}"
+                    class="object-cover w-full h-full rounded-lg"
+                  />
+                </div>
+                <p
+                  class="mt-2 text-center truncate cursor-pointer"
+                  title="{{ movie.title }}"
+                >
+                  {{ movie.title }}
+                </p>
               </div>
-              <p
-                class="mt-2 text-center truncate cursor-pointer"
-                title="{{ movie.title }}"
-              >
-                {{ movie.title }}
-              </p>
-            </div>
+            </a>
             {% endfor %}
           </div>
           <div class="scroll-btn scroll-btn-right">&gt;</div>
@@ -109,21 +113,23 @@
           <div class="scroll-btn scroll-btn-left">&lt;</div>
           <div class="flex gap-3 overflow-x-scroll no-scrollbar">
             {% for movie in trending_movies %}
-            <div class="max-w-60">
-              <div class="min-w-60">
-                <img
-                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
-                  alt="{{ movie.title }}"
-                  class="object-cover w-full h-full rounded-lg"
-                />
+            <a href='{%  url "movie" movie.id %}'>
+              <div class="max-w-60">
+                <div class="min-w-60">
+                  <img
+                    src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                    alt="{{ movie.title }}"
+                    class="object-cover w-full h-full rounded-lg"
+                  />
+                </div>
+                <p
+                  class="mt-2 text-center truncate cursor-pointer"
+                  title="{{ movie.title }}"
+                >
+                  {{ movie.title }}
+                </p>
               </div>
-              <p
-                class="mt-2 text-center truncate cursor-pointer"
-                title="{{ movie.title }}"
-              >
-                {{ movie.title }}
-              </p>
-            </div>
+            </a>
             {% endfor %}
           </div>
           <div class="scroll-btn scroll-btn-right">&gt;</div>
@@ -136,21 +142,23 @@
           <div class="scroll-btn scroll-btn-left">&lt;</div>
           <div class="flex gap-3 overflow-x-scroll no-scrollbar">
             {% for movie in upcoming_movies %}
-            <div class="max-w-60">
-              <div class="min-w-60">
-                <img
-                  src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
-                  alt="{{ movie.title }}"
-                  class="object-cover w-full h-full rounded-lg"
-                />
+            <a href='{%  url "movie" movie.id %}'>
+              <div class="max-w-60">
+                <div class="min-w-60">
+                  <img
+                    src="https://image.tmdb.org/t/p/w400{{ movie.poster_path }}"
+                    alt="{{ movie.title }}"
+                    class="object-cover w-full h-full rounded-lg"
+                  />
+                </div>
+                <p
+                  class="mt-2 text-center truncate cursor-pointer"
+                  title="{{ movie.title }}"
+                >
+                  {{ movie.title }}
+                </p>
               </div>
-              <p
-                class="mt-2 text-center truncate cursor-pointer"
-                title="{{ movie.title }}"
-              >
-                {{ movie.title }}
-              </p>
-            </div>
+            </a>
             {% endfor %}
           </div>
           <div class="scroll-btn scroll-btn-right">&gt;</div>

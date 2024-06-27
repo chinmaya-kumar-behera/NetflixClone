@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ movie.title }} - Details</title>
+    <link rel="stylesheet" href="{% static "css/index.css" %}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="h-auto">
+        <section class="relative max-h-screen w-full bg-red-300">
+            <img
+                src="https://image.tmdb.org/t/p/w1280{{ movie.backdrop_path }}"
+                alt="{{ movie.title }}"
+                class="w-full max-h-screen object-cover object-center"
+            />
+            <div class="absolute w-full h-full top-0 bg-gradient-to-r from-[#191918] from-30% to-transparent z-10">
+                <div class="h-screen w-full flex items-center p-20">
+                    <div class="space-y-3 max-w-2xl mt-40">
+                        <div class="">
+                            <h1 class="text-3xl font-semibold">{{ movie.title }}</h1>
+                        </div>
+
+                        <div class="flex gap-2 items-center text-[#999684]">
+                            <span class="">{{ movie.release_date }} | </span>
+                            <span class="">{{ movie.runtime }} mins |</span>
+
+                            {% for genre in movie.genres %} 
+                                {{ genre.name }}
+                                {% if not forloop.last %},
+                                {% endif %} 
+                            {% endfor %}
+                            
+                        </div>
+
+                        <div class="">
+                            <p class="">{{movie.overview}}</p>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="text-[#999684]">Starring:</span>
+                            {% for actor in cast %}
+                                {{ actor.name }}
+                                {% if not forloop.last %},
+                                {% endif %}
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute w-full h-[150px] py-10 bottom-0 flex justify-center bg-gradient-to-b from-transparent via-[#191918] to-[#191918] z-30">
+                <div class="w-[90%] h-18 px-5 py-3 flex justify-between bg-gradient-to-r from-[#681e3e] to-[#230e0e] rounded-md shadow-xl"> 
+                    <div class="flex gap-4 items-center">
+                        <div class="w-5">
+                            <a href="/" class="svg-nfLogo" data-uia="netflix-header-svg-logo"><svg class="svg-icon svg-icon-n-logo" focusable="false" viewBox="225 0 552 1000" aria-hidden="true" data-uia="n-logo"><defs><radialGradient id="11e6966e-c74f-4daf-8995-bdef68ae46fd-a" r="75%" gradientTransform="matrix(.38 0 .5785 1 .02 0)"><stop offset="60%" stop-opacity=".3"></stop><stop offset="90%" stop-opacity=".05"></stop><stop offset="100%" stop-opacity="0"></stop></radialGradient></defs><path d="M225 0v1000c60-8 138-14 198-17V0H225" fill="#b1060e"></path><path d="M579 0v983c71 3 131 9 198 17V0H579" fill="#b1060e"></path><path d="M225 0v200l198 600V557l151 426c76 3 136 9 203 17V800L579 200v240L423 0H225" fill="url(#11e6966e-c74f-4daf-8995-bdef68ae46fd-a)"></path><path d="M225 0l349 983c76 3 136 9 203 17L423 0H225" fill="#e50914"></path></svg></a>
+                        </div>
+                        <span class="text-md font-semibold">Plans start at just ₹149</span>
+                    </div>
+                    <button class="px-[50px] py-2 text-white rounded-sm bg-[#e00613]">Join Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- more like this -->
+        <section class="bg-[#191918] px-20 pb-10">
+            <div class="mb-5">
+                <h3 class="text-2xl font-semibold text-white">More Like This</h3>
+            </div>
+            <div class="grid grid-cols-6 gap-4 items-center justify-center">
+                {% for recommendation in recommendations %}
+                <a href='{%  url "movie" movie.id %}'>
+                    <div class="max-w-full" title="{{ recommendation.title }}">
+                        <img 
+                            src="https://image.tmdb.org/t/p/w1280{{ recommendation.poster_path }}" 
+                            alt="{{ recommendation.title }}"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+
+
+      
+        <!-- <div>
+        
+        {% if video_key %}
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/{{ video_key }}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        {% else %}
+        <p>Trailer not available.</p>
+        {% endif %}
+      </div> -->
+
+    </main>
+  </body>
+</html>
