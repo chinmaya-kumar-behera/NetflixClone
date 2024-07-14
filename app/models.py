@@ -1,3 +1,5 @@
-from django.db import models
+from mongoengine import Document, StringField, IntField, EmailField
 
-# Create your models here.
+class User(Document):
+    name = StringField(required=True)
+    email = EmailField()

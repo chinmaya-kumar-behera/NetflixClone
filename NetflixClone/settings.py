@@ -75,16 +75,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'NetflixClone.wsgi.application'
 
 
+import pymysql
+pymysql.version_info=(1,4,6,"final",0)
+pymysql.install_as_MySQLdb()
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+import djongo
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'netflix',
+        'USER': 'root',
+        'PASSWORD': 'Intr@Psd326',
+        'HOST': 'localhost',
+        'PORT': '3306', 
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
